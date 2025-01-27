@@ -1,0 +1,95 @@
+{
+  "artists": [
+    {
+      "name": "Adoração Central",
+      "bio": "Adoração Central é um ministério cristão de adoração focado em louvor congregacional e adoração contemporânea.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/adoracao_central.jpg"
+    },
+    {
+      "name": "Hillsong Worship",
+      "bio": "Hillsong Worship é uma banda de música cristã contemporânea, parte da Hillsong Church.",
+      "genre": "Worship",
+      "origin": "Austrália",
+      "image": "images/hillsong_worship.jpg"
+    },
+    {
+      "name": "Casa Worship",
+      "bio": "Casa Worship é um coletivo cristão brasileiro conhecido por suas canções cheias de paixão e profundidade espiritual.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/casa_worship.jpg"
+    },
+    {
+      "name": "Central 3",
+      "bio": "Central 3 é um grupo de louvor brasileiro que mistura criatividade e adoração em suas canções.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/central_3.jpg"
+    },
+    {
+      "name": "Chama Worship",
+      "bio": "Chama Worship é conhecido por suas canções que buscam inspirar corações a adorar com intensidade.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/chama_worship.jpg"
+    },
+    {
+      "name": "Cia Worship",
+      "bio": "Cia Worship traz uma abordagem moderna à música de adoração, conectando-se com a nova geração.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/cia_worship.jpg"
+    },
+    {
+      "name": "Deeper Worship",
+      "bio": "Deeper Worship é dedicado a levar os ouvintes a uma experiência mais profunda de adoração.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/deeper_worship.jpg"
+    },
+    {
+      "name": "Gabriel Guedes",
+      "bio": "Gabriel Guedes é um cantor e compositor cristão brasileiro, conhecido por sua voz marcante e composições inspiradoras.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/gabriel_guedes.jpg"
+    },
+    {
+      "name": "Gabriela Rocha",
+      "bio": "Gabriela Rocha é uma das principais vozes da música cristã brasileira, tocando corações com sua entrega vocal.",
+      "genre": "Worship",
+      "origin": "Brasil",
+      "image": "images/gabriela_rocha.jpg"
+    },
+    {
+      "name": "Acta Lovsang",
+      "bio": "Acta Lovsang é um ministério de louvor da Noruega, focado em canções de adoração contemporâneas.",
+      "genre": "Worship",
+      "origin": "Noruega",
+      "image": "images/acta_lovsang.jpg"
+    },
+    {
+      "name": "Get Focused",
+      "bio": "Get Focused é um grupo de louvor internacional que combina letras poderosas com sons inovadores.",
+      "genre": "Worship",
+      "origin": "Internacional",
+      "image": "images/get_focused.jpg"
+    },
+    {
+      "name": "Vetle Jarandsen",
+      "bio": "Vetle Jarandsen é um artista cristão norueguês que encanta com seu estilo único e mensagem de esperança.",
+      "genre": "Worship",
+      "origin": "Noruega",
+      "image": "images/vetle_jarandsen.jpg"
+    },
+    {
+      "name": "Agapao Worship",
+      "bio": "Agapao Worship é uma banda de adoração contemporânea conhecida por suas letras inspiradoras e arranjos criativos.",
+      "genre": "Worship",
+      "origin": "Coréia do Sul",
+      "image": "images/agapao_worship.jpg"
+    }
+  ]
+}
