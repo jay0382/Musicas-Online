@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rádio Altar Worship Online</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <h1><code>Altar Worship Online</code></h1>
+  </header>
+
+  <!-- Informações da música -->
+  <main>
+ 
+     <div id="countdown-timer" style="display: none; position: fixed; top: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 10px; border-radius: 5px; font-size: 16px; z-index: 1000;">
+        Tempo restante: <span id="timer-display"></span>
+     </div>
+  
+     <button id="cancel-sleep-timer-button" style="position: fixed; bottom: 10px; right: 10px;">Cancelar Sleep Timer</button>
+
+     <!-- Botão Versículo do Dia -->
+     <button id="verse-button" class="verse-button">📖 Versículo do Dia</button>
+
+     <!-- Modal Versículo -->
+    <div id="verse-modal" class="verse-modal">
+      <div class="verse-modal-content">
+        <span id="close-verse-modal" class="close-button">&times;</span>
+        <h2>Versículo do Dia</h2>
+        <p id="verse-text"></p>
+    </div>
+    </div>
+
+     <div class="background-effect"></div>
+
+     <div class="container"> 
+     <div id="digital-clock"></div>
+     </div>
+
+      <div id="playlist-selector">
+        <select id="playlist-dropdown">
+          <option value="playlist1">Worship Nacional</option>
+          <option value="playlist2">Worship Internacional</option>
+          <option value="combined">Worship Nacional e Internacional</option>
+          <option value="playlist3">Sertanejo Gospel</option>
+          <option value="favorites">Favoritos</option>
+        </select>
+          <button id="play-selected-playlist">Reproduzir</button>
+      </div>
+        
+     <div class="artist-filter">
+       <input type="text" id="artist-input" placeholder="Digite o nome do artista" />
+       <button id="filter-artist-button">Filtrar</button>
+    </div>
+
+     <!-- Efeitos visuais -->
+     <div id="effect-container">
+       <div class="lights">
+         <div class="light-beam"></div>
+         <div class="light-beam"></div>
+         <div class="light-beam"></div>
+         <div class="light-beam"></div> 
+       </div>
+       <div class="smoke">
+         <div class="smoke-layer"></div>
+         <div class="smoke-layer"></div>
+         <div class="smoke-layer"></div>
+       </div>
+     </div>
+
+     <div class="cascade left"></div>
+     <div class="cascade right"></div>
+     
+     <div id="music-info" class="music-info">
+         <img id="current-album" src="images/default-cover.jpg" alt="Capa do Álbum" />
+         <div id="music-details">
+         <h3 id="music-title"></h3> <!-- Nome da música será preenchido aqui -->
+         <p id="music-artist"></p>  <!-- Nome do artista será preenchido aqui -->
+        </div>
+     </div>
+
+     <!-- Botão de informações do artista -->
+     <button id="artist-info-button" class="info-button">ℹ️ Informações do Artista</button>
+
+     <!-- Modal -->
+     <div id="artist-modal" class="modal">
+       <div class="modal-content">
+         <span id="close-artist-modal" class="close">&times;</span>
+         <img id="artist-image" src="images/default-artist.png" alt="Imagem do Artista" />
+         <h2 id="artist-name">Nome do Artista</h2>
+         <p id="artist-bio">Biografia do artista...</p>
+         <p id="artist-genre">Gênero: </p>
+         <p id="artist-origin">Origem: </p>
+       </div>
+     </div>
+             
+     <div>   
+      <button id="view-lyrics" style="display: none;">Visualizar Letra</button>
+     </div>
+  
+     <audio id="player" controls>
+     Seu navegador não suporta o player de áudio.
+     </audio>
+    
+    <!-- Controles -->
+    <div class="controls">
+      <button id="sleep-timer-button" class="sleep-timer-button">🕓</button>
+      <button id="prev" class="control-button" aria-label="Anterior">⏪</button>
+      <button id="shuffle" class="control-button" aria-label="Modo aleatório">🔀</button>
+      <button id="next" class="control-button" aria-label="Próximo">⏩</button>
+      <button id="favorite-button" class="favorite-button" aria-label="Favorito">❤️</button>
+    </div>
+
+    <!-- Playlist -->
+    <ul id="playlist" class="hidden">
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Meu_Cristo.mp3" data-title="01 Meu Cristo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Digno.mp3" data-title="02 Digno" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Lapidação.mp3" data-title="03 Lapidação" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Arrebatamento.mp3" data-title="04 Arrebatamento" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Inesquecível.mp3" data-title="05 Inesquecível" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Olho_para_Ti_God_I_Look_To_You.mp3" data-title="06 Olho para Ti-God I Look To You" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Ali_Estava_a_Cruz.mp3" data-title="07 Ali Estava a Cruz" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Batimentos.mp3" data-title="08 Batimentos" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2016_Avivamento_Single/Avivamento.mp3" data-title="09 Avivamento" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2016_Avivamento_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2018_Profundo_Single/Profundo.mp3" data-title="10 Profundo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2018_Profundo_Single/images/Capa.jpeg"></li>
+      <li data-file="Videos/João_Cap5_Vers1a15.mp4" data-title="A Cura de Um Paralítico de Betesda" data-artist="João Cap 5 Vers 1 ao 15" data-cover="Videos/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Até_Outra_Vez.mp3" data-title="11 Até Outra Vez" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Vencedor.mp3" data-title="12 Vencedor" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Isaías_9.mp3" data-title="13 Isaías 9" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Para_Ti_Eu_Vou.mp3" data-title="14 Para Ti Eu Vou" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Bondade_de_Deus.mp3" data-title="15 Bondade de Deus" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Canção_da_Sala_do_Trono.mp3" data-title="16 Canção da Sala do Trono" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Saudai_o_Rei_Jesus.mp3" data-title="17 Saudai o Rei Jesus" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Abram_o_Caminho.mp3" data-title="18 Abram o Caminho" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Louvai_O_Nome,_Me_Rendo.mp3" data-title="19 Louvai o Nome, Me Rendo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2019_A_Casa_é_Sua/A_Casa_é_Sua.mp3" data-title="20 A Casa é Sua" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2019_A_Casa_é_Sua/images/Capa.jpeg"></li>
+      <li data-file="Videos/Provérbios_Cap8_Vers1a21.mp4" data-title="A Excelência e Justiça dos Preceitos da Sabedoria" data-artist="Provérbios Cap 8 Vers 1 ao 21" data-cover="Videos/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Casa_Worship/2019_A_Casa_é_Sua/Era_Eu.mp3" data-title="21 Era Eu" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2019_A_Casa_é_Sua/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Casa_Worship/2019_A_Casa_é_Sua/Vento_Impetuoso.mp3" data-title="22 Vento Impetuoso" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2019_A_Casa_é_Sua/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Casa_Worship/2019_A_Casa_é_Sua/Lenha_e_Fogo.mp3" data-title="23 Lenha e Fogo" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2019_A_Casa_é_Sua/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Casa_Worship/2019_A_Casa_é_Sua/Atraídos_Pelo_Fogo.mp3" data-title="24 Atraídos Pelo Fogo" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2019_A_Casa_é_Sua/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos/Pródigo.mp3" data-title="25 Pródigo" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos/Faz_Arder.mp3" data-title="26 Faz Arder" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos/Yeshua.mp3" data-title="27 Yeshua" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos/Alegria.mp3" data-title="28 Alegria" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos/Em_Tua_Presença.mp3" data-title="29 Em Tua Presença" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos/Preciso_de_Ti.mp3" data-title="30 Preciso de Ti" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/Não_Se_Apagará.mp3" data-title="31 Não Se Apagará" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/Nome_Mais_Lindo.mp3" data-title="32 Nome Mais Lindo" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/Sopra.mp3" data-title="33 Sopra" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/Quando_Ele_Chega.mp3" data-title="34 Quando Ele Chega" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/Vou_Voltar.mp3" data-title="35 Vou Voltar" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/A_Esperança_da_Glória.mp3" data-title="36 A Esperança da Glória" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2020_Momentos_Lado_B/És_Bom_Pra_Mim.mp3" data-title="37 És Bom Pra Mim" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2020_Momentos_Lado_B/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2021_Fumaça_Single/Fumaça.mp3" data-title="38 Fumaça" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2021_Fumaça_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Casa_Worship/2021_Seu_Amor_Me_Persegue_Single/Seu_Amor_Me_Persegue.mp3" data-title="39 Seu Amor Me Persegue" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2021_Seu_Amor_Me_Persegue_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Anseio_Ardente.mp3" data-title="40 Anseio Ardente" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Cordeiro_Que_Venceu.mp3" data-title="41 Cordeiro Que Venceu" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Imperfeito_Eu.mp3" data-title="42 Imperfeito Eu" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Bem_Perto.mp3" data-title="43 Bem Perto" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Lado_do_Altar.mp3" data-title="44 Lado do Altar" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Estou_de_Volta.mp3" data-title="45 Estou de Volta" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Jesus_Tu_És_Santo.mp3" data-title="46 Jesus Tu És Santo" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Não_Sou_Perfeito.mp3" data-title="47 Não Sou Perfeito" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Vejo_as_Estrelas.mp3" data-title="48 Vejo as Estrelas" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Yeshua_Desce.mp3" data-title="49 Yeshua Desce" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Fornalha.mp3" data-title="50 Fornalha" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Adorador_de_Yeshua.mp3" data-title="51 Adorador de Yeshua" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Renovarão.mp3" data-title="52 Renovarão" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/Novo_Tempo.mp3" data-title="53 Novo Tempo" data-artist="Casa Worship" data-cover="PlayList/Casa_Worship/2023_Novo_Tempo_Ao_Vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Cordeiro_e_Leão.mp3" data-title="54 Cordeiro e Leão" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Não_Há_Outro_Lugar_ft_Alessandro_Villas_Boas.mp3" data-title="55 Não Há Outro Lugar ft Alessandro Villas Boas" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Transfiguração.mp3" data-title="56 Transfiguração" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Quero_Conhecer_Te_Mais.mp3" data-title="57 Quero Conhecer-Te Mais" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Tu_És_Bom.mp3" data-title="58 Tu És Bom" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Para_Ti_Eu_Vou.mp3" data-title="59 Para Ti Eu Vou" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Live_Session/Tocar_o_Céu.mp3" data-title="60 Tocar o Céu" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Live_Session/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2017_Tudo_a_Ver_Com_Ele_Single/Tudo_a_Ver_Com_Ele.mp3" data-title="61 Tudo a Ver Com Ele" data-artist="Central 3" data-cover="PlayList/Central_3/2017_Tudo_a_Ver_Com_Ele_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2018_Coração_de_Pai_Single/Coração_do_Pai.mp3" data-title="62 Coração do Pai" data-artist="Central 3" data-cover="PlayList/Central_3/2018_Coração_de_Pai_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2019_Atos_Single/Atos.mp3" data-title="63 Atos" data-artist="Central 3" data-cover="PlayList/Central_3/2019_Atos_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2019_Como_Eu_Te_Amo_Single/Como_Eu_Te_Amo_ft_Isaías_Saad.mp3" data-title="64 Como Eu Te Amo ft Isaías Saad" data-artist="Central 3" data-cover="PlayList/Central_3/2019_Como_Eu_Te_Amo_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2019_Estremecem_Single/Estremecem.mp3" data-title="65 Estremecem" data-artist="Central 3" data-cover="PlayList/Central_3/2019_Estremecem_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2019_Tão_Perto_Single/Tão_Perto.mp3" data-title="66 Tão Perto" data-artist="Central 3" data-cover="PlayList/Central_3/2019_Tão_Perto_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2019_Tua_Glória_Que_Me_Beija_Single/Tua_Glória_Que_Me_Beija.mp3" data-title="67 Tua Glória Que Me Beija" data-artist="Central 3" data-cover="PlayList/Central_3/2019_Tua_Glória_Que_Me_Beija_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2020_Cumprirás_Single/Cumprirás.mp3" data-title="68 Cumprirás" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Cumprirás_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2020_Eterno_Single/Eterno_ft_Bia_Morandini.mp3" data-title="69 Eterno ft Bia Morandini" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Eterno_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2020_Leão_e_Trono_Single/Leão_e_o_Trono_ft_Brunão_Morada.mp3" data-title="70 Leão e o Trono ft Brunão Morada" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Leão_e_Trono_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2020_Sobre_Todo_Nome/Tudo_Que_Eu_Preciso.mp3" data-title="71 Tudo Que Eu Preciso" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Sobre_Todo_Nome/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2020_Sobre_Todo_Nome/Sobre_Todo_Nome.mp3" data-title="72 Sobre Todo Nome" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Sobre_Todo_Nome/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2020_Sobre_Todo_Nome/Universo.mp3" data-title="73 Universo" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Sobre_Todo_Nome/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2020_Sobre_Todo_Nome/Vem_Descansar.mp3" data-title="74 Vem Descansar" data-artist="Central 3" data-cover="PlayList/Central_3/2020_Sobre_Todo_Nome/images/Capa.jpg"></li> 
+      <li data-file="PlayList/Central_3/2021_As_Muitas_Águas_Single/As_Muitas_Águas_ft_Rebeca_Carvalho.mp3" data-title="75 As Muitas Águas ft Rebeca Carvalho" data-artist="Central 3" data-cover="PlayList/Central_3/2021_As_Muitas_Águas_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Central_3/2021_Lar_de_Milagres_Single/Lar_de_Milagres.mp3" data-title="76 Lar de Milagres" data-artist="Central 3" data-cover="PlayList/Central_3/2021_Lar_de_Milagres_Single/images/Capa.png"></li>
+      <li data-file="PlayList/Central_3/2022_Deus_do_Impossível_YAHWEH_Single/Deus_do_Impossível_YAHWEH_ft_Nívea_soares.mp3" data-title="77 Deus do Impossível YAHWEH ft Nívea Soares" data-artist="Central 3" data-cover="PlayList/Central_3/2022_Deus_do_Impossível_YAHWEH_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2022_Emanuel_Single/Emanuel_ft_Gabriela_Rocha.mp3" data-title="78 Emanuel ft Gabriela Rocha" data-artist="Central 3" data-cover="PlayList/Central_3/2022_Emanuel_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Central_3/2022_Meu_Respirar_Single/Meu_Respirar.mp3" data-title="79 Meu Respirar" data-artist="Central 3" data-cover="PlayList/Central_3/2022_Meu_Respirar_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2022_Abba_Single/Abba.mp3" data-title="80 Abba" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2022_Abba_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2022_Acende_a_Chama_Single/Acende_a_Chama.mp3" data-title="81 Acende a Chama" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2022_Acende_a_Chama_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2022_Eis_Me_Aqui_Single/Eis_Me_Aqui.mp3" data-title="82 Eis Me Aqui" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2022_Eis_Me_Aqui_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2022_Pode_Entrar_Single/Pode_Entrar.mp3" data-title="83 Pode Entrar" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2022_Pode_Entrar_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2023_Não_Há_Outro_Lugar_Single/Não_Há_Outro_Lugar.mp3" data-title="84 Não Há Outro Lugar" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2023_Não_Há_Outro_Lugar_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2023_Ruach/Quando_Ele_Chega.mp3" data-title="85 Quando Ele Chega" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2023_Ruach/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2023_Ruach/Lamento.mp3" data-title="86 Lamento" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2023_Ruach/images/Capa.jpg"></li>
+      <li data-file="PlayList/Chama_Worship/2023_Ruach/Ruach.mp3" data-title="87 Ruach" data-artist="Chama Worship" data-cover="PlayList/Chama_Worship/2023_Ruach/images/Capa.jpg"></li>
+      <li data-file="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/Ele_é_Maior.mp3" data-title="88 Ele é Maior" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/Bondade.mp3" data-title="89 Bondade" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/Jesus_de_Nazaré.mp3" data-title="90 Jesus de Nazaré" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/Tempo_de_Milagres.mp3" data-title="91 Tempo de Milagres" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/Sim_Definitivo.mp3" data-title="92 Sim Definitivo" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/Ao_Teu_Encontro.mp3" data-title="93 Ao Teu Encontro" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2020_Ao_Teu_Encontro/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2021_Tu_És_Suficiente_Single/Tu_És_Suficiente_ft_Jhonas_Serra.mp3" data-title="94 Tu És Suficiente ft Jhonas Serra" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2021_Tu_És_Suficiente_Single/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2022_Conhecido_no_Céu_Single/Conhecido_no_Céu.mp3" data-title="95 Conhecido no Céu" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2022_Conhecido_no_Céu_Single/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2022_Cristo_em_Nós_Single/Cristo_em_Nós.mp3" data-title="96 Cristo em Nós" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2022_Cristo_em_Nós_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Cia_Worship/2022_Grãos_de_Areia_Single/Grãos_de_Areia.mp3" data-title="97 Grãos de Areia" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2022_Grãos_de_Areia_Single/images/Capa.webp"></li>
+      <li data-file="PlayList/Cia_Worship/2023_Preparai_o_Caminho_Single/Preparai_o_Caminho.mp3" data-title="98 Preparai o Caminho" data-artist="Cia Worship" data-cover="PlayList/Cia_Worship/2023_Preparai_o_Caminho_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Deeper_Worship/2019_Mais_Profundo/Minha_Fé.mp3" data-title="99 Minha Fé" data-artist="Deeper Worship" data-cover="PlayList/Deeper_Worship/2019_Mais_Profundo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Deeper_Worship/2019_Mais_Profundo/Mais_Profundo.mp3" data-title="100 Mais Profundo" data-artist="Deeper Worship" data-cover="PlayList/Deeper_Worship/2019_Mais_Profundo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Deeper_Worship/2019_Mais_Profundo/Vem_Sobre_Mim.mp3" data-title="101 Vem Sobre Mim" data-artist="Deeper Worship" data-cover="PlayList/Deeper_Worship/2019_Mais_Profundo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Deeper_Worship/2019_Mais_Profundo/Filho_Pródigo.mp3" data-title="102 Filho Pródigo" data-artist="Deeper Worship" data-cover="PlayList/Deeper_Worship/2019_Mais_Profundo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Deeper_Worship/2019_Mais_Profundo/Santo_The_Stand.mp3" data-title="103 Santo The Stand" data-artist="Deeper Worship" data-cover="PlayList/Deeper_Worship/2019_Mais_Profundo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Deeper_Worship/2020_Som_da_Cruz_Single/Som_da_Cruz.mp3" data-title="104 Som da Cruz" data-artist="Deeper Worship" data-cover="PlayList/Deeper_Worship/2020_Som_da_Cruz_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Eu_Sou_Teu_Rooftops.mp3" data-title="105 Eu Sou Teu Rooftops" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Meu_Lugar.mp3" data-title="106 Meu Lugar" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Desperta_Wake.mp3" data-title="107 Desperta Wake" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Teu_Santo_Nome.mp3" data-title="108 Teu Santo Nome" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Pra_Onde_Iremos.mp3" data-title="109 Pra Onde Iremos" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>  
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Creio_em_Ti_Still_Believe.mp3" data-title="110 Creio em Ti Still Believe" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Vou_Te_Adorar.mp3" data-title="111 Vou Tea Adorar" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Nossa_Canção_ft_Leonardo_Gonçalves.mp3" data-title="112 Nossa Canção ft Leonardo Gonçalves" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/A_Voz.mp3" data-title="113 A Voz" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/Gratidão.mp3" data-title="114 Gratidão" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2014_Pra_Onde_Iremos/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2016_Até_Transbordar/Nada_Além_de_Ti.mp3" data-title="115 Nada Além de Ti" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2016_Até_Transbordar/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2016_Até_Transbordar/Estás_Comigo_You_Are_For_Me.mp3" data-title="116 Estás Comigo You Are For Me" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2016_Até_Transbordar/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2016_Até_Transbordar/Creio_Que_Tu_És_a_Cura.mp3" data-title="117 Creio Que Tu És a Cura" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2016_Até_Transbordar/images/Capa.jpg"></li> 
+      <li data-file="PlayList/Gabriela_Rocha/2016_Até_Transbordar/Meu_Salvador.mp3" data-title="118 Meu Salvador" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2016_Até_Transbordar/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2016_EP_Gabriela_Rocha/Atos_2.mp3" data-title="119 Atos 2" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2016_EP_Gabriela_Rocha/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2016_EP_Gabriela_Rocha/Me_Aproximou.mp3" data-title="120 Me Aproximou" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2016_EP_Gabriela_Rocha/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2018_Céu/Lugar_Secreto.mp3" data-title="121 Lugar Secreto" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2018_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2018_Céu/Céu.mp3" data-title="122 Céu" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2018_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2018_Céu/Santo_Espírito_Vem.mp3" data-title="123 Santo Espírito Vem" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2018_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2018_Céu/Meu_Coração_é_Teu_Pra_Te_Adorar.mp3" data-title="124 Meu Coração é Teu Pra Te Adorar" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2018_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2018_Céu/Eu_Navegarei.mp3" data-title="125 Eu Navegarei" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2018_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/Hosana_ft_Lukas_Agustinho.mp3" data-title="126 Hosana ft Lukas Agustinho" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/Diz_You_Say.mp3" data-title="127 Diz You Say" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/A_Ele_a_Glória.mp3" data-title="128 A Ele a Glória" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/Eu_e_o_Rei_ft_Weslei_Santos.mp3" data-title="129 Eu e o Rei ft Weslei Santos" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/Estou_Seguro.mp3" data-title="130 Estou Seguro" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/Correrei.mp3" data-title="131 Correrei" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/Leão.mp3" data-title="132 Leão" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2020_Hosana_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2021_Ecoar/Espírito_Enche_a_Minha_Vida_,_Ao_Único.mp3" data-title="133 Espírito Enche a Minha Vida , Ao Único" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2021_Ecoar/images/Capa.png"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2021_Ecoar/Nenhuma_Condenação_Há.mp3" data-title="134 Nenhuma Condenação Há" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2021_Ecoar/images/Capa.png"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2021_Ecoar/O_Mover_do_Espírito_,_Quero_que_Valorize.mp3" data-title="135 O Mover do Espírito , Quero que Valorize" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2021_Ecoar/images/Capa.png"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2021_Ecoar/Alfa_e_Omega_,_Pra_Te_Adorar.mp3" data-title="136 Alfa e Omega , Pra Te Adorar" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2021_Ecoar/images/Capa.png"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2021_Ecoar/Ouro_na_Fornalha.mp3" data-title="137 Ouro na Fornalha" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2021_Ecoar/images/Capa.png"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/És_o_Amor.mp3" data-title="138 És o Amor" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/Me_Atraiu.mp3" data-title="139 Me Atraiu" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/Canção_do_Céu.mp3" data-title="140 Canção do Céu" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/Meu_Jesus.mp3" data-title="141 Meu Jesus" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/Uma_Hora_é_Pouco.mp3" data-title="142 Uma Hora é Pouco" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2023_A_Presença_Ao_vivo/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Toda_Terra.mp3" data-title="143 Toda Terra" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Yahweh_ft_Fernandinho.mp3" data-title="144 Yahweh ft Fernandinho" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Deus_Está_Aqui_Medley.mp3" data-title="145 Deus Está Aqui Medley" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Estrela_da_Manhã.mp3" data-title="146 Estrela da Manhã" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Agnus_Dei.mp3" data-title="147 Agnus Dei" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Poderoso_Deus_Medley.mp3" data-title="148 Poderoso Deus Medley" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Não_Há_Lugar_Mais_Alto.mp3" data-title="149 Não Há Lugar Mais Alto" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/Santa_Ceia_ft_Pr_Jackson_Antônio.mp3" data-title="150 Santa Ceia ft Pr Jackson Antônio" data-artist="Gabriela Rocha" data-cover="PlayList/Gabriela_Rocha/2024_A_Igreja_Ao_Vivo/images/Capa.webp"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2017_Acredito_Single/Acredito_We_Believe.mp3" data-title="151 Acredito We Believe" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2017_Acredito_Single/images/Capa.jpg "></li> 
+      <li data-file="PlayList/Gabriel_Guedes/2019_In_Memorian_Single/In_Memorian.mp3" data-title="152 In Memorian" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_In_Memorian_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Nada_Além_do_Sangue_Single/Nada_Além_do_Sangue.mp3" data-title="153 Nada Além do Sangue" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Nada_Além_do_Sangue_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Nada_Mais_Single/Nada_Mais.mp3" data-title="154 Nada Mais" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Nada_Mais_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Quando_Ele_Vem_Single/Quando_Ele_Vem.mp3" data-title="155 Quando Ele Vem" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Quando_Ele_Vem_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Rei_em_Meu_Coração_Single/Rei_em_Meu_Coração.mp3" data-title="156 Rei em Meu Coração" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Rei_em_Meu_Coração_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Santo_Single/Santo.mp3" data-title="157 Santo" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Santo_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Vitorioso_És_Single/Vitorioso_És.mp3" data-title="158 Vitorioso És" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Vitorioso_És_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Minhas_Gueras.mp3" data-title="159 Minhas Guerras" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Eu_Creio.mp3" data-title="160 Eu Creio" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li> 
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Ele_Vem_ft_Gabriela_Rocha.mp3" data-title="161 Ele Vem ft Gabriela Rocha" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Eterno_Presente.mp3" data-title="162 Eterno Presente" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Atos_2.mp3" data-title="163 Atos 2" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Noiva.mp3" data-title="164 Noiva" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2019_Eterno_Presente/Ousado_Amor.mp3" data-title="165 Ousado Amor" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2019_Eterno_Presente/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2020_A_Bênção_Single/A_Bênção_ft_Nívea_Soares.mp3" data-title="166 A Bênção ft Nívea Soares" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2020_A_Bênção_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2020_Este_é_o_Mover_Single/Este_é_o_Mover.mp3" data-title="167 Este é o Mover" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2020_Este_é_o_Mover_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2020_Glória_e_Aleluia_Single/Glória_e_Aleluia.mp3" data-title="168 Glória e Aleluia" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2020_Glória_e_Aleluia_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2020_Onde_Estás_Single/Onde_Estás.mp3" data-title="169 Onde Estás" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2020_Onde_Estás_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/Todos_os_Meus_Dias.mp3" data-title="170 Todos os Meus Dias" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/Te_Desejamos.mp3" data-title="171 Te Desejamos" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/Eu_Me_Rendo.mp3" data-title="172 Eu Me Rendo" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/Filho.mp3" data-title="173 Filho" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/O_Senhor_é_Meu_Pastor.mp3" data-title="174 O Senhor é Meu Pastor" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/Tua_Graça.mp3" data-title="175 Tua Graça" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/Lá_na_Cruz.mp3" data-title="176 Lá na Cruz" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2021_Gabriel_Guedes_Ao_Vivo/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2022_Ele_Nos_Ama_Single/Ele_Nos_Ama_ft_Bruna_Karla.mp3" data-title="177 Ele Nos Ama ft Bruna Karla" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2022_Ele_Nos_Ama_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2022_Oferta_Agradável_a_Ti_Single/Oferta_Agradável_a_Ti.mp3" data-title="178 Oferta Agradável a Ti" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2022_Oferta_Agradável_a_Ti_Single/images/Capa.jpg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2023_Eu_Me_Rendo_Single/Eu_Me_Rendo.mp3" data-title="179 Eu Me Rendo" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2023_Eu_Me_Rendo_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2023_Te_Desejamos_Single/Te_Desejamos.mp3" data-title="180 Te Desejamos" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2023_Te_Desejamos_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2023_Tu_És_Fiel_Senhor_,_Sou_Feliz_,_Meu_Tributo_Single/Tu_És_Fiel_Senhor_,_Sou_Feliz_,_Meu_Tributo.mp3 " data-title="181 Tu És Fiel Senhor , Sou Feliz , Meu Tributo" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2023_Tu_És_Fiel_Senhor_,_Sou_Feliz_,_Meu_Tributo_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2023_De_Ti_Preciso_Single/De_Ti_Preciso.mp3" data-title="182 De Ti Preciso" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2023_De_Ti_Preciso_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_Ele_Vem_Single/Ele_Vem_ft_Gabriela_Rocha.mp3" data-title="183 Ele Vem ft Gabriela Rocha" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_Ele_Vem_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_Minhas_Coroas_Single/Minhas_Coroas.mp3" data-title="184 Minhas Coroas " data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_Minhas_Coroas_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_Em_Breve_Ele_Virá_Single/Em_Breve_Ele_Virá.mp3 " data-title="185 Em Breve Ele Virá" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_Em_Breve_Ele_Virá_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_Shalom_Single/Shalom.mp3" data-title="186 Shalom" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_Shalom_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_Canta_Minh-Alma_Single/Canta_Minh-Alma.mp3" data-title="187 Canta Minh'Alma" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_Canta_Minh-Alma_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_Outro_Igual_Não_Há_,_Ao_Rei_Nós_Coroamos_Single/Outro_Igual_Não_Há_,_Ao_Rei_Nós_Coroamos.mp3" data-title="188 Outro Igual Não Há , Ao Rei Nós Coroamos" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_Outro_Igual_Não_Há_,_Ao_Rei_Nós_Coroamos_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Gabriel_Guedes/2024_O_Centro_És_Tu_Single/O_Centro_És_Tu.mp3" data-title="189 O Centro És Tu" data-artist="Gabriel Guedes" data-cover="PlayList/Gabriel_Guedes/2024_O_Centro_És_Tu_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Veja_Canta_Minh-Alma.mp3" data-title="190 Veja Canta Minh'Alma" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/No_Controle.mp3" data-title="191 No Controle" data-artist="Hilsong Portugês" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/2018_Quão_Lindo_Esse_Nome/Céus_Abertos_,_Como_Um_Rio.mp3" data-title="192 Céus Abertos , Como Um Rio" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Não_Há_Um_Nome_Igual.mp3" data-title="193 Não Há Um Nome Igual" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Vasos_Quebrados_,_Sublime_Graça.mp3" data-title="194 Vasos Quebrados , Sublime Graça" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Teu_grande_Amor.mp3" data-title="195 Teu Grande Amor" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Louvai_o_Nome_Anástasis.mp3" data-title="196 Louvai o Nome Anástasis" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Que_Haja_Luz.mp3" data-title="197 Que Haja Luz" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/Óh_Quão_Lindo_Esse_Nome_É.mp3" data-title="198 Óh Quão Lindo Esse Nome É" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2018_Quão_Lindo_Esse_Nome/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Rei_dos_Reis.MP3" data-title="199 Rei dos Reis" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Salvou_Meu_Coração.mp3" data-title="200 Salvou Meu Coração" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Outro_na_Fornalha.mp3" data-title="201 Ouro na Fornalha" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Como_Estou_Tu_Me_Amas.mp3" data-title="202 Como Estou Tu Me Amas" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Boa_Graça.mp3" data-title="203 Boa Graça" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/A_Paixão.mp3" data-title="204 A Paixão" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Em_Paz.mp3" data-title="205 Em Paz" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Me_Lembrarei.mp3" data-title="206 Me Lembrarei" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/ Vinho_Novo.MP3" data-title="207 Vinho Novo" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Vida_Achei.mp3" data-title="208 Vida Achei" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Sozinho_Nunca_Andarei.mp3" data-title="209 Sozinho Jamais Andarei" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
+      <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Há_Poder.mp3" data-title="210 Sei que Farás" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
+    <!-- Adicione mais músicas aqui -->
+    </ul>
+
+    <!-- Nova Playlist -->
+    <ul id="playlist2" class="hidden">
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2019_Grensesprengende/Grensesprengende.mp3" data-title="01 Grensesprengende" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2019_Grensesprengende/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2019_Grensesprengende/Hvem_Jeg_Er.mp3" data-title="02 Hvem Jeg Er" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2019_Grensesprengende/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2019_Grensesprengende/Fullbrakt.mp3" data-title="03 Fullbrakt" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2019_Grensesprengende/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2020_Motepukt/Skaperen.mp3" data-title="04 Skaperen" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2020_Motepukt/images/Capa.jpg"></li> 
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2020_Motepukt/All_Pris.mp3" data-title="05 All Pris" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2020_Motepukt/images/Capa.jpg"></li> 
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/Ingen_Større_Glede.mp3" data-title="06 Ingen Større Glede" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/images/Capa.jpeg"></li> 
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/Miraklenes_Gud.mp3" data-title="07 Miraklenes Gud" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/Virkelig_Fri.mp3" data-title="08 Virkelig Fri" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/Tett_Med_Deg.mp3" data-title="09 Tett Med Deg" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2021_Noe_Mer/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2022_Nok_For_Meg_Single/Nok_For_Meg.mp3" data-title="10 Nok For Meg" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2022_Nok_For_Meg_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2023_Utvalgt_Single/Utvalgt.mp3" data-title="11 Utvalgt" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2023_Utvalgt_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2024_Den_Eneste/Den_vi_Trenger_-_Vår_Gud.mp3" data-title="12 Den vi Trenger - Vår Gud" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2024_Den_Eneste/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Acta_Lovsang/2024_Den_Eneste/Klippen_i_Mitt_Liv.mp3" data-title="13 Klippen i Mitt Liv" data-artist="Acta Lovsang" data-cover="PlayListInter/Noruega/Acta_Lovsang/2024_Den_Eneste/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/Nåden_,_Synden.mp3" data-title="14 Nåden ᐳ Synden" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/Allmektig_Gud.mp3" data-title="15 Allmektig Gud" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/Jeg_Overgir_Meg.mp3" data-title="16 Jeg Overgir Meg" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/I_Alt_Jeg_Gjør.mp3" data-title="17 I Alt Jeg Gjør" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/Hjerteslag.mp3" data-title="18 Hjerteslag" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2021_Nåden_,_Synden/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/Jesus_Kristus_Er_Den_Samme.mp3" data-title="19 Jesus Kristus Er Den Samme" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/Hellig.mp3" data-title="20 Hellig" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/I_Din_Nærhet.mp3" data-title="21 I Din Nærhet" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/Fred,_Håp_Og_Framtid.mp3" data-title="22 Fred , Håp Og Framtid" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/Alt_Jeg_Trenger.mp3" data-title="23 Alt Jeg Trenger" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/Gud_Vi_Tror.mp3" data-title="24 Gud Vi Tror" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2023_I_Din_Nærhet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2024_Fred_,_Håp_Og_Framtid_Single/Fred_,_Håp_Og_Framtid.mp3" data-title="25 Fred , Håp Og Framtid" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2024_Fred_,_Håp_Og_Framtid_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2024_Heling_Single/Helling.mp3" data-title="26 Helling" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2024_Heling_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Get_Focused/2024_Pust_Single/Pust.mp3" data-title="27 Pust" data-artist="Get Focused" data-cover="PlayListInter/Noruega/Get_Focused/2024_Pust_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Da_Jesus_Forlot_Graven.mp3" data-title="28 Da Jesus Forlot Graven" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Troens_Trygge_Grunn.mp3" data-title="29 Troens Trygge Grunn" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Evig_Din.mp3" data-title="30 Evig Din" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Naden_Har_Vunnet.mp3" data-title="31 Naden Har Vunnet" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Alt_Er_En_Gave.mp3" data-title="32 Alt Er En Gave" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Forsonet.mp3" data-title="33 Forsonet" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/Alt_Han_Betalte.mp3" data-title="34 Alt Han Betalte" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2019_Forsonet/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2020_Salige_Visshet_Single/Salige_Visshet.mp3" data-title="35 Salige Visshet" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2020_Salige_Visshet_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2020_Skjult_I_Kristus_Single/Skjult_I_Kristus.mp3" data-title="36 Skjult I Kristus" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2020_Skjult_I_Kristus_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2022_Jeg_Er_I_Herrens_Hender_Single/Jeg_Er_I_Herrens_Hender.mp3" data-title="37 Jeg Er I Herrens Hender" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2022_Jeg_Er_I_Herrens_Hender_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2022_Levende_Bevis_Single/Levende_Bevis.mp3" data-title="38 Levende Bevis" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2022_Levende_Bevis_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2023_Gjennom_Alt_Single/Gjennom_Alt_ft_Skjærgårds.mp3" data-title="39 Gjennom Alt ft Skjærgårds" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2023_Gjennom_Alt_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Noruega/Vetle_Jarandsen/2024_Jesus_er_Min_Frelser_Single/Jesus_er_Min_Frelser_ft_Emilie_Ellingsen.mp3" data-title="40 Jesus er Min Frelser ft Emilie Ellingsen" data-artist="Vetle Jarandsen" data-cover="PlayListInter/Noruega/Vetle_Jarandsen/2024_Jesus_er_Min_Frelser_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2018_Your_Glory/목마른_자들_All_Who_Are_Thirsty.mp3" data-title="41  목마른 자들 All Who Are Thirsty" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2018_Your_Glory/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2018_Your_Glory/내_삶_주의_것_Your_Glory_ft_Nothing_But_The_Blood.mp3" data-title="42  내 삶 주의 것 Your Glory With Nothing But The Blood" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2018_Your_Glory/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2018_Your_Glory/나_주님이_더욱_필요해_I_Need_You_More.mp3" data-title="43  나 주님이 더욱 필요해 I Need You More" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2018_Your_Glory//images/Capa.jpeg"></li> 
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2020_Oceans/오션스_Where_Feet_May_Fail.mp3" data-title="44  오션스 Where Feet May Fail" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2020_Oceans/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2021_The_Blessing_Single/축복_The_Blessing_ft_Siwon_Choi.mp3" data-title="45  축복 The Blessing ft Siwon Choi" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2021_The_Blessing_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2022_Give_Me_Jesus_Single/예수만_원해요_Give_Me_Jesus.mp3" data-title="46  예수만 원해요 Give Me Jesus" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2022_Give_Me_Jesus_Single/images/Capa.jpeg"></li> 
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Here_For_You_Single/주님을_맞이하며_Here_for_You.mp3" data-title="47  주님을 맞이하며 Here for You" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Here_For_You_Single/images/Capa.jpeg"</li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Living_Hope_Single/주_예수_내_산_소망_Living_Hope.mp3" data-title="48  주 예수 내 산 소망 Living Hope" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Living_Hope_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Psalms_19:14_Single/나의_말과_마음이_Psalms_19_14.mp3" data-title="49  나의 말과 마음이 Psalms 19:14" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Psalms_19:14_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Still_Single/주_품에_Still.mp3" data-title="50  주 품에 Still" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Still_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Victory_Anthem_Single/ 승리의_깃발을_Victory_Anthem.mp3" data-title="51  승리의 깃발을 Victory Anthem" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2023_Victory_Anthem_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Fresh_Wind_Single/새로운_바람_Fresh_Wind.mp3" data-title="52  새로운 바람 Fresh Wind" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Fresh_Wind_Single/images/Capa.jpg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Oh_It_Is_Pouring_Out_Single/오_나의_마음에_부어져요_Oh_It_Is_Pouring_Out.mp3" data-title="53  오 나의 마음에 부어져요 Oh It Is Pouring Out" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Oh_It_Is_Pouring_Out_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Von_Guten_Mächten_Single/선한_능력으로_Von_Guten_Mächten.mp3" data-title="54  선한 능력으로 Von Guten Mächten" data-artist="아가파오 워십 Agapao Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Von_Guten_Mächten_Single/images/Capa.jpeg"></li> 
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Set_A_Fire_Single/성령의_불_주소서_Set_A_Fire.mp3" data-title="55  성령의 불 주소서 Set A Fire" data-artist="아가파오 워십 Agapao _Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Set_A_Fire_Single/images/Capa.jpeg"></li>
+      <li data-file="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Praise_Single/프레이즈_Praise_ft_Siwon_Choi.mp3" data-title="56  프레이즈 Praise ft Siwon Choi" data-artist="아가파오_워십_Agapao_Worship" data-cover="PlayListInter/Coréia_do_Sul/아가파오_워십_Agapao_Worship/2024_Praise_Single/images/Capa.jpeg"></li>
+     </ul>
+
+    <!-- Nova Playlist -->
+    <ul id="playlist3" class="hidden">
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/A_Voz_do_Coração.mp3" data-title="01 A Voz do Coração" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Gemido_da_Alma.mp3" data-title="02 Gemido da Alma" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Irmã_de_Oração.mp3" data-title="03 Irmã de Oração" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Grande_Amor.mp3" data-title="04 Grande Amor" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Horário_Marcado.mp3" data-title="05 Horário Marcado" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Segura_na_Mão_de_Deus.mp3" data-title="06 Segura na Mão de Deus" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Companheiro.mp3" data-title="07 Companheiro" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Deus_Que_Não_Falha.mp3" data-title="08 Deus Que Não Falha" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Primeiro_Olhar.mp3" data-title="09 Primeiro Olhar" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/Soldado_Machucado.mp3" data-title="10 Soldado Machucado" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/Deixa_Esta_Vida_Triste.mp3" data-title="11 Deixa Esta Vida Triste" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/Jesus_Está_Aqui.mp" data-title="12 Jesus Está Aqui" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/Nosso_Chão.mp3" data-title="13 Nosso Chão" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/Tremendamente_Santo.mp3" data-title="14 Tremendamente Santo" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/O_Homem_das_Mãos_Furadas.mp3" data-title="15 O Homem das Mãos Furadas" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2000_O_Caroneiro/images/Capa.jpg"></li>             
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2001_Louva_Viola/Rei_Soberano.mp3" data-title="16 Rei Soberano" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2001_Louva_Viola/images/Capa.jpeg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/2001_Louva_Viola/Louva_Viola.mp3" data-title="17 Louva Viola" data-artist="Os Levitas=" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/2001_Louva_Viola/images/Capa.jpeg"></li>
+     </ul>
+
+    <div id="lyrics-modal">
+      <button id="close-lyrics">Fechar</button>
+      <h3 id="lyrics-title"></h3>
+      <p id="lyrics-content"></p>
+    </div>
+    
+  </main>
+
+  <!-- Efeitos visuais -->
+  <div id="effect-container" class="effect"></div>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>
+      <em>"Louvem ao Senhor com cânticos e com harpa, com cânticos ao som de instrumentos de corda e flauta." – Salmos 150:4</em>
+    </p>
+    <p>© 2024 Altar Worship Online. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
