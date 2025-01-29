@@ -241,7 +241,7 @@ body {
 
 #artist-input {
   width: 250px; /* Largura do campo de entrada */
-  height: 30px; /* Altura do campo */
+  height: 25px; /* Altura do campo */
   font-size: 16px; /* Tamanho do texto */
   padding: 10px; /* Espaçamento interno */
   border: 2px solid #ccc; /* Borda */
