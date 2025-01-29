@@ -1,3 +1,113 @@
+/* Estilos responsivos */
+
+/* Ajustes para telas pequenas (até 768px, como celulares em modo retrato) */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem; /* Reduz o tamanho do texto do cabeçalho */
+    padding: 8px;
+    max-width: 90%; /* Aumenta a largura permitida */
+  }
+
+  #current-album {
+    max-width: 200px; /* Ajusta a capa para telas menores */
+    max-height: 200px;
+  }
+
+    #music-info {
+    width: 90%; /* Ocupar 90% da largura da tela */
+    margin: 0 auto; /* Centralizar */
+    padding: 15px; /* Adicionar espaço interno */
+    text-align: center; /* Centralizar o texto */
+  }
+
+  #music-title {
+    font-size: 1.8em; /* Aumentar tamanho do título */
+    margin-bottom: 5px; /* Adicionar espaçamento abaixo */
+  }
+
+  #music-artist {
+    font-size: 1.5em; /* Ajustar tamanho do artista */
+    color: #555; /* Adicionar cor suave */
+  }
+
+  audio {
+    width: 95%; /* Ajusta o player para ocupar quase toda a largura */
+  }
+
+  .controls {
+    max-width: 90%; /* Ajusta o tamanho dos controles */
+    gap: 10px; /* Reduz o espaçamento entre os botões */
+    padding: 8px; /* Reduz o preenchimento */
+  }
+
+  .control-button {
+    font-size: 1.5em; /* Ajusta o tamanho dos botões */
+  }
+}
+ 
+/* Ajustes para telas muito pequenas (até 480px, como celulares pequenos) */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem; /* Reduz ainda mais o tamanho do cabeçalho */
+    padding: 6px;
+  }
+
+  #current-album {
+    max-width: 150px; /* Reduz a capa do álbum */
+    max-height: 150px;
+  }
+
+  #music-title {
+    font-size: 18px; /* Reduz o tamanho do título */
+  }
+
+  #music-artist {
+    font-size: 14px; /* Ajusta o tamanho do artista */
+  }
+
+  audio {
+    width: 100%; /* O player ocupa toda a largura */
+  }
+
+  .controls {
+    max-width: 95%; /* Reduz os controles */
+    gap: 8px; /* Ajusta o espaçamento */
+  }
+
+  .control-button {
+    font-size: 1.3em; /* Reduz os botões */
+  }
+}
+
+/* Ajustes para telas maiores (acima de 1024px, como tablets e desktops) */
+@media (min-width: 1024px) {
+  #current-album {
+    max-width: 300px; /* Aumenta a capa do álbum */
+    max-height: 300px;
+  }
+
+  #music-title {
+    font-size: 28px; /* Aumenta o tamanho do título */
+  }
+
+  #music-artist {
+    font-size: 20px; /* Aumenta o tamanho do artista */
+  }
+
+  audio {
+    width: 70%; /* Ajusta o player */
+  }
+
+  .controls {
+    max-width: 40%; /* Aumenta os controles */
+    gap: 20px; /* Aumenta o espaçamento */
+  }
+
+  .control-button {
+    font-size: 2em; /* Aumenta os botões */
+  }
+}
+
 
 body {
   background-image: url('images/Fundo2.webp'); /* Caminho para a imagem */
@@ -423,105 +533,6 @@ body {
     }
 }
 
-/* Estilos responsivos */
-
-/* Ajustes para telas pequenas (até 768px, como celulares em modo retrato) */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2rem; /* Reduz o tamanho do texto do cabeçalho */
-    padding: 8px;
-    max-width: 90%; /* Aumenta a largura permitida */
-  }
-
-  #current-album {
-    max-width: 200px; /* Ajusta a capa para telas menores */
-    max-height: 200px;
-  }
-
-  #music-title {
-    font-size: 20px; /* Reduz o tamanho do título da música */
-  }
-
-  #music-artist {
-    font-size: 16px; /* Ajusta o tamanho do nome do artista */
-  }
-
-  audio {
-    width: 95%; /* Ajusta o player para ocupar quase toda a largura */
-  }
-
-  .controls {
-    max-width: 90%; /* Ajusta o tamanho dos controles */
-    gap: 10px; /* Reduz o espaçamento entre os botões */
-  }
-
-  .control-button {
-    font-size: 1.5em; /* Ajusta o tamanho dos botões */
-  }
-}
-
-/* Ajustes para telas muito pequenas (até 480px, como celulares pequenos) */
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.5rem; /* Reduz ainda mais o tamanho do cabeçalho */
-    padding: 6px;
-  }
-
-  #current-album {
-    max-width: 150px; /* Reduz a capa do álbum */
-    max-height: 150px;
-  }
-
-  #music-title {
-    font-size: 18px; /* Reduz o tamanho do título */
-  }
-
-  #music-artist {
-    font-size: 14px; /* Ajusta o tamanho do artista */
-  }
-
-  audio {
-    width: 100%; /* O player ocupa toda a largura */
-  }
-
-  .controls {
-    max-width: 95%; /* Reduz os controles */
-    gap: 8px; /* Ajusta o espaçamento */
-  }
-
-  .control-button {
-    font-size: 1.3em; /* Reduz os botões */
-  }
-}
-
-/* Ajustes para telas maiores (acima de 1024px, como tablets e desktops) */
-@media (min-width: 1024px) {
-  #current-album {
-    max-width: 300px; /* Aumenta a capa do álbum */
-    max-height: 300px;
-  }
-
-  #music-title {
-    font-size: 28px; /* Aumenta o tamanho do título */
-  }
-
-  #music-artist {
-    font-size: 20px; /* Aumenta o tamanho do artista */
-  }
-
-  audio {
-    width: 70%; /* Ajusta o player */
-  }
-
-  .controls {
-    max-width: 40%; /* Aumenta os controles */
-    gap: 20px; /* Aumenta o espaçamento */
-  }
-
-  .control-button {
-    font-size: 2em; /* Aumenta os botões */
-  }
-}
 
 /* Estilo para o cabeçalho */
 header h1 {
