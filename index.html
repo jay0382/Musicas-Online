@@ -51,10 +51,10 @@
           <button id="play-selected-playlist">Reproduzir</button>
       </div>
         
-     <div class="artist-filter">
-       <input type="text" id="artist-input" placeholder="Digite o nome do artista" />
-       <button id="filter-artist-button">Filtrar</button>
-    </div>
+       <div class="artist-filter">
+         <input type="text" id="artist-input" placeholder="Digite o nome do artista" />
+         <button id="filter-artist-button">Filtrar</button>
+       </div>     
 
      <!-- Efeitos visuais -->
      <div id="effect-container">
@@ -100,21 +100,22 @@
      <div>   
       <button id="view-lyrics" style="display: none;">Visualizar Letra</button>
      </div>
+
+      <audio id="player" controls>
+        Seu navegador não suporta o player de áudio.
+      </audio>
   
-     <audio id="player" controls>
-     Seu navegador não suporta o player de áudio.
-     </audio>
-    
     <!-- Controles -->
     <div class="controls">
-      <button id="sleep-timer-button" class="sleep-timer-button">🕓</button>
+      <button id="sleep-timer-button" class="sleep-timer-button" aria-label="Sleep Timer">🕓</button>
       <button id="prev" class="control-button" aria-label="Anterior">⏪</button>
-      <button id="shuffle" class="control-button" aria-label="Modo aleatório">🔀</button>
+      <button id="play-pause" class="control-button" aria-label="Play/Pause">▶️</button>
       <button id="next" class="control-button" aria-label="Próximo">⏩</button>
-      <button id="favorite-button" class="favorite-button" aria-label="Favorito">❤️</button>
+      <button id="shuffle" class="control-button" aria-label="Modo aleatório">🔀</button>
+      <button id="favorite-button" class="favorite-button" aria-label="Favorito">❤</button>
     </div>
-
-    <!-- Playlist -->
+        
+     <!-- Playlist -->
     <ul id="playlist" class="hidden">
       <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Meu_Cristo.mp3" data-title="01 Meu Cristo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
       <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Digno.mp3" data-title="02 Digno" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
@@ -328,7 +329,7 @@
       <li data-file="PlayList/Hilsong_Português/2020_Rei_dos_Reis/Vida_Achei.mp3" data-title="208 Vida Achei" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2020_Rei_dos_Reis/images/Capa.jpeg"></li>
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Sozinho_Nunca_Andarei.mp3" data-title="209 Sozinho Jamais Andarei" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Há_Poder.mp3" data-title="210 Há Poder" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
-      <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Nos_Rendemos_de_Novo.mp3" data-title="211 Nos Rendemos de Novo" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Nos_Rendemos_de_Novo.mp3" data-title="211 Nos Rendemos de Novo" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Vento_Novo.mp3" data-title="212 Vento Novo" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Sei_Que_Farás.mp3" data-title="213 Sei Que Farás" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Algo_Novo.mp3" data-title="214 Algo Novo" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
@@ -336,6 +337,10 @@
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Avivamento.mp3" data-title="216 Avivamento" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
       <li data-file="PlayList/Hilsong_Português/2022_Sei_que_Farás/Como_Eu_Sou.mp3" data-title="217 Como Eu Sou" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2022_Sei_que_Farás/images/Capa.jpg"></li>
       <li data-file="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/A_Quem.mp3" data-title="218 A Quem" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/Pra_Sempre_Cantarei.mp3" data-title="219 Pra Sempre Cantarei" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/images/Capa.jpeg"></li>
+      <li data-file="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/Te_Agradeço.mp3" data-title="220 Te Agradeço" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/Oceanos_,_Onde_Meus_Pés_Podem_Falhar.mp3" data-title="221 Oceanos , Onde Meus Pés Podem Falhar" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/images/Capa.jpg"></li>
+      <li data-file="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/Do_Céu_Ele_Desceu.mp3" data-title="222 Do Céu Ele Desceu" data-artist="Hilsong Português" data-cover="PlayList/Hilsong_Português/2023_Assim_Como_é_no_Céu/images/Capa.jpg"></li>
     <!-- Adicione mais músicas aqui -->
     </ul>
 
