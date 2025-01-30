@@ -199,69 +199,6 @@ close-button:hover {
   color: #000;
 }
  
-
-/* Estilo do modal para informações do artista */
-/* Modal de informações do artista */
-#artist-modal {
-    display: none; /* Ocultar por padrão */
-    position: fixed;
-    z-index: 1000; /* Garantir que o modal fique acima de outros elementos */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centralizar na tela */
-    width: 50%; /* Reduzir largura */
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-}
-
-/* Conteúdo do modal */
-#artist-modal .modal-content {
-    padding: 20px;
-    text-align: center;
-}
-
-/* Botão de fechar */
-#artist-modal .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #666;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-#artist-modal .close:hover {
-    color: #000;
-}
-
-/* Estilo da imagem do artista */
-#artist-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 15px 0;
-}
-
-/* Texto no modal */
-#artist-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-#artist-bio,
-#artist-genre,
-#artist-origin {
-    font-size: 14px;
-    color: #555;
-    margin: 5px 0;
-}
-
 /* Contêiner para o efeito de simbolos musicais */
 .background-effect {
     position: fixed;
@@ -308,25 +245,6 @@ close-button:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
   width: fit-content; /* Ajusta ao tamanho do conteúdo */
   margin: 10px auto; /* Centraliza o elemento horizontalmente */
-}
-
-/* Estilo do botão "Visualizar Letra" */
-#view-lyrics {
-  display: block; /* Torna o botão um elemento em bloco */
-  margin: 10px auto; /* Centraliza horizontalmente */
-  background-color: #007bff; /* Fundo azul */
-  color: white; /* Texto branco */
-  border: none;
-  border-radius: 5px; /* Arredonda as bordas */
-  padding: 10px 20px; /* Espaçamento interno */
-  font-size: 16px; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão ao passar por cima */
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-#view-lyrics:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
 
 /* Estilos para seletores de playlist */
@@ -549,6 +467,7 @@ close-button:hover {
     }
 }
 
+/* Estilos para informçãoes, imagam album */
 .music-info {
     display: flex;
     align-items: center; /* Alinha verticalmente */
@@ -596,6 +515,127 @@ close-button:hover {
     color: #0000FF;
     text-align: cemter;
 }
+
+/* Estilo do botão "Visualizar Letra" */
+#view-lyrics {
+  display: block; /* Torna o botão um elemento em bloco */
+  margin: 10px auto; /* Centraliza horizontalmente */
+  background-color: #007bff; /* Fundo azul */
+  color: white; /* Texto branco */
+  border: none;
+  border-radius: 5px; /* Arredonda as bordas */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de mão ao passar por cima */
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+#view-lyrics:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo botão informações do artista */
+.info-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+    color: #fff; /* Texto branco */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borda branca semi-transparente */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    margin-bottom: 30px; /* Espaço abaixo do botão */
+
+}
+
+.info-button:hover {
+    background: rgba(255, 255, 255, 0.2); /* Fundo mais claro no hover */
+    color: #00ffcc; /* Mudança de cor para dar destaque */
+    border: 2px solid #00ffcc;
+    box-shadow: 0px 4px 12px rgba(0, 255, 204, 0.4);
+}
+
+.info-button:active {
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+.info-button::before {
+    content: "ℹ "; /* Ícone de informação */
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+/* Estilo do modal para informações do artista */
+/* Modal de informações do artista */
+#artist-modal {
+    display: none; /* Ocultar por padrão */
+    position: fixed;
+    z-index: 1000; /* Garantir que o modal fique acima de outros elementos */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centralizar na tela */
+    width: 50%; /* Reduzir largura */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+/* Conteúdo do modal */
+#artist-modal .modal-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Botão de fechar */
+#artist-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#artist-modal .close:hover {
+    color: #000;
+}
+
+/* Estilo da imagem do artista */
+#artist-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 15px 0;
+}
+
+/* Texto no modal */
+#artist-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#artist-bio,
+#artist-genre,
+#artist-origin {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
 
 
 /* Ajuste para o player */
@@ -680,6 +720,8 @@ close-button:hover {
 
 /* Cor específica para o botão Favoritos */
 .favorite-button {
+  background: rgba(255, 253, 208, 0.9); /* Fundo levemente opaco */
+  padding: 15px;
   color: red;
 }
 
