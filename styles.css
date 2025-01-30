@@ -122,6 +122,20 @@ body {
   padding-bottom: 80px; /* Espaço extra no final da página */
 }
 
+
+/* Estilo para o cabeçalho */
+header h1 {
+  background-color: rgba(204, 204, 204, 0.8); /* Fundo com opacidade */
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+  color: #006400;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve */
+  max-width: 60%; /* Largura máxima */
+  margin: 20px auto;
+  padding: 10px; /* Espaçamento interno */
+}
+
 #countdown-timer {
   display: none;
   position: fixed;
@@ -136,6 +150,55 @@ body {
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Botão Versículo do Dia */
+.verse-button {
+  font-size: 18px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.verse-button:hover {
+  background-color: #524bda;
+}
+
+/* Modal do versículo do dia */
+.verse-modal {
+  display: none;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.verse-modal-content {
+  padding: 20px;
+  text-align: center;
+}
+ 
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #aaa;
+  cursor: pointer;
+}
+ 
+close-button:hover {
+  color: #000;
+}
+ 
 
 /* Estilo do modal para informações do artista */
 /* Modal de informações do artista */
@@ -199,55 +262,7 @@ body {
     margin: 5px 0;
 }
 
-/* Botão Versículo do Dia */
-.verse-button {
-  font-size: 18px;
-  background-color: #6c63ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.verse-button:hover {
-  background-color: #524bda;
-}
-
-/* Modal */
-.verse-modal {
-  display: none;
-  position: fixed;
-  top: 10%;
-  right: 5%;
-  width: 300px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-.verse-modal-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  color: #aaa;
-  cursor: pointer;
-}
-
-.close-button:hover {
-  color: #000;
-}
- 
-/* Contêiner para o efeito */
+/* Contêiner para o efeito de simbolos musicais */
 .background-effect {
     position: fixed;
     top: 0;
@@ -314,6 +329,7 @@ body {
   background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
 
+/* Estilos para seletores de playlist */
 #playlist-selector {
   text-align: center;
   margin: 20px auto;
@@ -533,66 +549,61 @@ body {
     }
 }
 
-
-/* Estilo para o cabeçalho */
-header h1 {
-  background-color: rgba(204, 204, 204, 0.8); /* Fundo com opacidade */
-  border-radius: 10px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 3rem;
-  color: #006400;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve */
-  max-width: 60%; /* Largura máxima */
-  margin: 20px auto;
-  padding: 10px; /* Espaçamento interno */
+.music-info {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    background: rgba(255, 253, 208, 0.9); /* Fundo levemente opaco */
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Efeito vidro fosco */
+    max-width: 600px;
+    margin: 20px auto; /* Centraliza na tela */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para a exibição da música */
-#music-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 20px;
+.image-album {
+    flex-shrink: 0; /* Impede que a imagem seja redimensionada */
 }
 
-#current-album {
-  max-width: 250px; /* Tamanho máximo da capa */
-  max-height: 250px;
-  border-radius: 15px; /* Bordas arredondadas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra ao redor da imagem */
-  margin-bottom: 20px; /* Espaçamento entre a imagem e o texto */
+.image-album img {
+    width: 300px; /* Ajuste conforme necessário */
+    height: 300px;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.5); /* Borda sutil */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #music-details {
-  background-color: rgba(255, 253, 208, 0.9); /* Fundo levemente opaco */
-  border-radius: 10px;
-  display: flrx;
-  flex-direction: column;
-  align-items: center;
-  width: 40%;
+    display: flex;
+    flex-direction: column; /* Mantém título e artista empilhados */
+    margin-left: 15px;
+    text-align: center;
 }
 
 #music-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #0000FF;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra para melhor leitura */
-  margin: 10px 0;
+    font-size: 25px;
+    font-weight: bold;
+    color: #0000FF; /* Texto */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 #music-artist {
-  font-size: 18px;
-  color: #ddd;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra para melhor leitura */
-  margin-bottom: 15px;
-  color: #0000FF;
+    font-size: 20px;
+    color: #ddd;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para melhorar leitura */
+    color: #0000FF;
+    text-align: cemter;
 }
 
-* Estilo para o player de áudio */
-audio {
-  margin-top: 20px;
-  width: 80%;
+
+/* Ajuste para o player */
+#audio-player-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px; /* Adiciona um espaçamento entre o player e as informações */
 }
 
 /* Controles de navegação */
@@ -603,7 +614,7 @@ audio {
   justify-content: center;
   gap: 15px;
   margin: 20px auto;
-  max-width: 40%;
+  max-width: 60%;
   padding: 10px;
 }
 
@@ -624,7 +635,7 @@ audio {
   transform: scale(1.1);
 }
 
-/* Estilo padrão do botão Shuffle */
+/* Estilo para o botão shuffle  */
 #shuffle {
   background-color: transparent;
   color: #333333; /* Cor padrão */

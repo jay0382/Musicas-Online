@@ -74,13 +74,23 @@
      <div class="cascade left"></div>
      <div class="cascade right"></div>
      
-     <div id="music-info" class="music-info">
-         <img id="current-album" src="images/default-cover.jpg" alt="Capa do Álbum" />
-         <div id="music-details">
-         <h3 id="music-title"></h3> <!-- Nome da música será preenchido aqui -->
-         <p id="music-artist"></p>  <!-- Nome do artista será preenchido aqui -->
-        </div>
-     </div>
+    <div>
+      <!-- Container da Imagem do Álbum -->
+      <div id="image-album" class="image-album">
+          <img id="current-album" src="images/default-cover.jpg" alt="Capa do Álbum"> 
+      </div>
+
+      <!-- Container das Informações da Música -->
+      <div id="music-info" class="music-info">
+          <div id="music-details">
+              <h3 id="music-title">Título da Música</h3>
+              <p id="music-artist">Nome do Artista</p>
+          </div>
+      </div>
+
+      <div>
+         <button id="view-lyrics" style="display: none;">Visualizar Letra</button>
+      </div>
 
      <!-- Botão de informações do artista -->
      <button id="artist-info-button" class="info-button">ℹ️ Informações do Artista</button>
@@ -96,11 +106,7 @@
          <p id="artist-origin">Origem: </p>
        </div>
      </div>
-             
-     <div>   
-      <button id="view-lyrics" style="display: none;">Visualizar Letra</button>
-     </div>
-
+   </div>             
       <audio id="player" controls>
         Seu navegador não suporta o player de áudio.
       </audio>
