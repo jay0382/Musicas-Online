@@ -15,7 +15,7 @@
 
   <!-- Informações da música -->
   <main>
- 
+           
      <div id="countdown-timer" style="display: none; position: fixed; top: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 10px; border-radius: 5px; font-size: 16px; z-index: 1000;">
         Tempo restante: <span id="timer-display"></span>
      </div>
@@ -85,6 +85,7 @@
           <div id="music-details">
               <h3 id="music-title">Título da Música</h3>
               <p id="music-artist">Nome do Artista</p>
+              <p id="current-number" class="music-number"></p> <!-- Número da música aqui -->
           </div>
       </div>
 
@@ -125,16 +126,16 @@
         
      <!-- Playlist -->
     <ul id="playlist" class="hidden">
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Meu_Cristo.mp3" data-title="01 Meu Cristo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Digno.mp3" data-title="02 Digno" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Lapidação.mp3" data-title="03 Lapidação" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Arrebatamento.mp3" data-title="04 Arrebatamento" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Inesquecível.mp3" data-title="05 Inesquecível" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Olho_para_Ti_God_I_Look_To_You.mp3" data-title="06 Olho para Ti-God I Look To You" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Ali_Estava_a_Cruz.mp3" data-title="07 Ali Estava a Cruz" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Batimentos.mp3" data-title="08 Batimentos" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2016_Avivamento_Single/Avivamento.mp3" data-title="09 Avivamento" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2016_Avivamento_Single/images/Capa.jpeg"></li>
-      <li data-file="PlayList/Adoração_Central/2018_Profundo_Single/Profundo.mp3" data-title="10 Profundo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2018_Profundo_Single/images/Capa.jpeg"></li>
+      <li data-number="1" data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Meu_Cristo.mp3" data-title="01 Meu Cristo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Digno.mp3" data-title="02 Digno" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Lapidação.mp3" data-title="03 Lapidação" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Arrebatamento.mp3" data-title="04 Arrebatamento" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Inesquecível.mp3" data-title="05 Inesquecível" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Olho_para_Ti_God_I_Look_To_You.mp3" data-title="06 Olho para Ti-God I Look To You" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Ali_Estava_a_Cruz.mp3" data-title="07 Ali Estava a Cruz" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/Batimentos.mp3" data-title="08 Batimentos" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2015_Sobre_Coisas_Espirituais/images/Capa.jpeg" data-year="2015"></li>
+      <li data-file="PlayList/Adoração_Central/2016_Avivamento_Single/Avivamento.mp3" data-title="09 Avivamento" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2016_Avivamento_Single/images/Capa.jpeg" data-year="2016"></li>
+      <li data-file="PlayList/Adoração_Central/2018_Profundo_Single/Profundo.mp3" data-title="10 Profundo" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2018_Profundo_Single/images/Capa.jpeg" data-year="2018"></li>
       <li data-file="Videos/João_Cap5_Vers1a15.mp4" data-title="A Cura de Um Paralítico de Betesda" data-artist="João Cap 5 Vers 1 ao 15" data-cover="Videos/images/Capa.jpeg"></li>
       <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Até_Outra_Vez.mp3" data-title="11 Até Outra Vez" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
       <li data-file="PlayList/Adoração_Central/2023_Services_Ao_Vivo/Vencedor.mp3" data-title="12 Vencedor" data-artist="Adoração Central" data-cover="PlayList/Adoração_Central/2023_Services_Ao_Vivo/images/Capa.jpg"></li>
@@ -358,6 +359,12 @@
       <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Bondade_e_Misericórdia.mp3" data-title="229 Bondade e Misericórdia" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
       <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Vivo_Está.mp3" data-title="230 Vivo Está" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
       <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Vou_Além.mp3" data-title="231 Vou Além" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
+      <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Revela-me.mp3" data-title="232 Revela-me" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>      
+      <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Emanuel.mp3" data-title="233 Emanuel" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
+      <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Eu_Também_,_100_Bilhões_X.mp3" data-title="234 Eu Também , 100 Bilhões X" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
+      <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Estou_Aqui_ft_Luma_Elpidio.mp3" data-title="235 Estou Aqui ft Luma Elpidio" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
+      <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Espírito_Vem.mp3" data-title="236 Espírito Vem" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
+      <li data-file="PlayList/Isaías_Saad/2018_Isaías_Saad/Ousado_Amor.mp3" data-title="237 Ousado Amor" data-artist="Isaías Saad" data-cover="PlayList/Isaías_Saad/2018_Isaías_Saad/images/Capa.jpg"></li>
     <!-- Adicione mais músicas aqui -->
     </ul>
 
@@ -427,7 +434,8 @@
       <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/A_Voz_do_Coração.mp3" data-title="01 A Voz do Coração" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
       <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Gemido_da_Alma.mp3" data-title="02 Gemido da Alma" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
       <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Irmã_de_Oração.mp3" data-title="03 Irmã de Oração" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
-      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Grande_Amor.mp3" data-title="04 Grande Amor" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
+      <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Grande_Amor.mp3" data-title="04 Grande Amor" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_G
+emido_da_Alma/images/Capa.jpg"></li>
       <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Horário_Marcado.mp3" data-title="05 Horário Marcado" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
       <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Segura_na_Mão_de_Deus.mp3" data-title="06 Segura na Mão de Deus" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>
       <li data-file="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/Companheiro.mp3" data-title="07 Companheiro" data-artist="Os Levitas" data-cover="PlayList_Sertanejo_Gospel/Os_Levitas/1999_Gemido_da_Alma/images/Capa.jpg"></li>

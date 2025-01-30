@@ -14,10 +14,10 @@ const nextButton = document.getElementById('next');
 const effectContainer = document.getElementById('effect-container');
 const title = document.getElementById('music-title');
 const artist = document.getElementById('music-artist');
+const currentNumber = document.getElementById("current-number");
 const btnPlaylist1 = document.getElementById('btn-playlist1');
 const btnPlaylist2 = document.getElementById('btn-playlist2');
 const btnCombined = document.getElementById('btn-combined');
-
 
 
 // Modal para exibição da letra
@@ -113,14 +113,13 @@ function playMusic(index) {
   title.innerText = music.title;
   artist.innerText = music.artist;
   albumCover.src = music.cover;
+  currentNumber.textContent = music.number; // Exibe o número da música atual
 
   // Exibir o botão "Visualizar Letra"
   showLyricsButton(music.title);
 
   player.play().catch((error) => console.log("Erro ao tocar a música:", error));
 }
-
-
 
 // Funções para botão e modal informções do artista
 document.addEventListener("DOMContentLoaded", () => {
