@@ -485,8 +485,8 @@ close-button:hover {
 }
 
 .image-album img {
-    width: 500px; /* Ajuste conforme necessário */
-    height: 500px;
+    width: 600px; /* Ajuste conforme necessário */
+    height: 600px;
     border-radius: 10px;
     border: 3px solid rgba(255, 255, 255, 0.5); /* Borda sutil */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
