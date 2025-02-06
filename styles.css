@@ -246,65 +246,79 @@ close-button:hover {
   margin: 10px auto; /* Centraliza o elemento horizontalmente */
 }
 
-/* Estilos para seletores de playlist */
+/* Estilos para seletror de playlist e filtro de artista */
 #playlist-selector {
-  text-align: center;
-  margin: 20px auto;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+    gap: 10px; /* Espaçamento entre os elementos */
+    margin-bottom: 20px; /* Espaçamento abaixo */
 }
 
 #playlist-dropdown {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-right: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease; /* Suaviza a transição no hover */
+}
+
+#playlist-dropdown:hover {
+    border-color: #4caf50; /* Muda a borda ao passar o mouse */
+    background-color: #f0f8f0; /* Adiciona um leve fundo */
 }
 
 #play-selected-playlist {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Suaviza a transição no hover */
 }
 
 #play-selected-playlist:hover {
-  background-color: #45a049;
+    background-color: #45a049; /* Altera o fundo no hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão */
 }
 
-   /* Função para filtro de artista */
 .artist-filter {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre input e botão */
 }
 
 #artist-input {
-  width: 250px; /* Largura do campo de entrada */
-  height: 25px; /* Altura do campo */
-  font-size: 16px; /* Tamanho do texto */
-  padding: 10px; /* Espaçamento interno */
-  border: 2px solid #ccc; /* Borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  margin-right: 10px; /* Espaço entre o campo e o botão */
+    width: 200px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease; /* Suaviza a transição no hover */
+}
+
+#artist-input:hover {
+    border-color: #4caf50; /* Muda a borda ao passar o mouse */
+    background-color: #f9fdf9; /* Fundo leve ao passar o mouse */
 }
 
 #filter-artist-button {
-  height: 30px; /* Altura do botão */
-  font-size: 16px; /* Tamanho do texto */
-  padding: 0 20px; /* Espaçamento interno horizontal */
-  background-color: #007bff; /* Cor de fundo */
-  color: white; /* Cor do texto */
-  border: none; /* Sem borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de clique */
+    background-color: blue;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Suaviza a transição no hover */
 }
 
+
 #filter-artist-button:hover {
-  background-color: #555;
+    background-color: #333; /* Altera o fundo no hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão */
 }
 
 /* Função para efeitos feixes de luzes */
