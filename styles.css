@@ -110,8 +110,8 @@
 
 
 body {
-  background-image: url('images/Fundo2.webp'); /* Caminho para a imagem */
-  background-size: cover; /* Ajusta o tamanho para cobrir toda a área */
+  background-color: #000000; /* Adiciona uma cor de fundo caso a imagem não cubra totalmente */
+  background-size: contain; /* Ajusta o tamanho para cobrir toda a área */
   background-position: center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Evita repetições da imagem */
   background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
@@ -214,7 +214,7 @@ close-button:hover {
 .symbol {
     position: absolute;
     font-size: 40px; /* Tamanho dos símbolos */
-    color: rgba(0, 0, 0, 0.5); /* Preto translúcido */
+    color: white;
     animation: float 10s linear infinite;
 }
 
@@ -301,7 +301,7 @@ close-button:hover {
 
 #artist-input:hover {
     border-color: #4caf50; /* Muda a borda ao passar o mouse */
-    background-color: #f9fdf9; /* Fundo leve ao passar o mouse */
+    background-color: blue; /* Fundo leve ao passar o mouse */
 }
 
 #filter-artist-button {
