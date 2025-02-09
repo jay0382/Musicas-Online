@@ -2,38 +2,38 @@
   "artists": [
     {
       "name": "Adoração Central",
-      "bio": "Adoração Central é um ministério cristão de adoração focado em louvor congregacional e adoração contemporânea.",
+      "bio": "Adoração Central é um ministério cristão de adoração focado em louvor congregacional e adoração contemporânea , é a expressão da entrega a Deus, vivendo para cumprir Sua Vontade. É também o compromisso com a igreja local, a Igreja Central, respondendo ao chamado divino por meio do louvor e da adoração em comunhão com os irmãos. Além disso, é o serviço ao corpo de Cristo, compartilhando com outros ministérios as maravilhas que Deus tem realizado.",
       "genre": "Worship",
       "origin": "Brasil",
-      "image": "images/adoracao_central.jpg"
+      "image": "images/artistas/Adoracao_Central.jpeg"
     },
     {
-      "name": "Hillsong Worship",
-      "bio": "Hillsong Worship é uma banda de música cristã contemporânea, parte da Hillsong Church.",
+      "name": "Hilsong Português",
+      "bio": "Hillsong em Português é o ministério de Louvor da Igreja Hillsong no Brasil. A equipe de louvor tem o compromisso de continuamente oferecer ao corpo de Cristo novas canções de adoração e encorajar uma profunda paixão em ver pessoas se conectado com o Deus vivo através de uma experiência pessoal.",
       "genre": "Worship",
-      "origin": "Austrália",
-      "image": "images/hillsong_worship.jpg"
+      "origin": "Brasil",
+      "image": "images/artistas/Hilsong_Portugues.jpg"
     },
     {
       "name": "Casa Worship",
-      "bio": "Casa Worship é um coletivo cristão brasileiro conhecido por suas canções cheias de paixão e profundidade espiritual.",
+      "bio": "Casa Worship é um coletivo cristão brasileiro conhecido por suas canções cheias de paixão e profundidade espiritual , com músicas evangélicas em estilo pop rock, o grupo formado na Igreja no ano de 2018 , Casa Worship, já conta com mais de 790 milhões de visualizações no Youtube, 120 milhões de streams no Spotify e já passou no Top 7 de músicas mais postadas por brasileiros no Instagram. A banda goianiense “Casa Worship” nasceu na Igreja Casa em 2018, lançou o seu primeiro projeto no ano seguinte e, em tempo recorde, se tornou um dos maiores fenômenos na internet e nas redes sociais.",
       "genre": "Worship",
       "origin": "Brasil",
-      "image": "images/casa_worship.jpg"
+      "image": "images/artistas/Casa_Worship.jpg"
     },
     {
       "name": "Central 3",
-      "bio": "Central 3 é um grupo de louvor brasileiro que mistura criatividade e adoração em suas canções.",
+      "bio": "Central 3 é um movimento liderado por jovens líderes de louvor e músicos da Igreja Missionária de Ribeirão Preto/SP, cujo propósito do grupo é levar pessoas , a serem impactadas por encontros com o amor e a presença de Deus através da música. O ministério nasceu em 2017 e desde então se tornou conhecido por todo país com suas canções de louvor e adoração, lançando rotineiramente álbuns , singles e vídeos para plataformas digitais, sempre com o propósito de elevar o nome de Jesus em nossa geração. Além de propagar a mensagem do evangelho através do canal do Youtube com vlogs e pequenas ministrações.",
       "genre": "Worship",
       "origin": "Brasil",
-      "image": "images/central_3.jpg"
+      "image": "images/artistas/Central_3.jpg"
     },
     {
       "name": "Chama Worship",
-      "bio": "Chama Worship é conhecido por suas canções que buscam inspirar corações a adorar com intensidade.",
+      "bio": "Chama Worship é um ministério de louvor e adoração em Cidade Nova , Manaus , conhecido por suas canções que buscam inspirar corações a adorar com intensidade. Com a missão de judar os sem igreja e os que foram feridos pela religiosidade encontrarem sua casa.",
       "genre": "Worship",
       "origin": "Brasil",
-      "image": "images/chama_worship.jpg"
+      "image": "images/artistas/Chama_Worship.jpg"
     },
     {
       "name": "Cia Worship",

@@ -773,8 +773,8 @@ close-button:hover {
 
 /* Estilo da imagem do artista */
 #artist-image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     margin: 15px 0;
