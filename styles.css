@@ -136,27 +136,31 @@ header h1 {
 }
 
 #countdown-timer {
-  display: none;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    position: absolute; /* Permite posicionamento livre */
+    top: 10px; /* Alinha no topo */
+    left: 10px; /* Alinha à esquerda */
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Cor do texto */
+    padding: 10px 15px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    font-size: 14px; /* Tamanho do texto */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    text-align: center; /* Centraliza o texto */
 }
 
-/* Botão Versículo do Dia */
+/* Botão Versículo do Dia e quiz */
 .verse-button {
+  position: absolute;
+  top: 10px; /* Alinha no topo */
+  right: 15px; /* Alinha à direita */
   font-size: 18px;
   background-color: #6c63ff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -165,6 +169,26 @@ header h1 {
 .verse-button:hover {
   background-color: #524bda;
 }
+
+.quiz-button {
+    position: absolute;
+    top: 10px; /* Alinha no topo */
+    right: 212px; /* Posiciona ao lado do botão Versículo do Dia */
+    background-color: #28a745; /* Cor de fundo para Quiz */
+    color: white; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-button:hover {
+    background-color: #218838; /* Cor ao passar o mouse */
+}
+
 
 /* Modal do versículo do dia */
 .verse-modal {
@@ -197,7 +221,113 @@ header h1 {
 close-button:hover {
   color: #000;
 }
- 
+
+/* Estilo do modal */
+.quiz-modal {
+    display: none; /* Oculto por padrão */
+    position: fixed; /* Fixo na tela */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cobre toda a tela */
+    height: 100%; /* Cobre toda a altura */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+    z-index: 2000; /* Sobre outros elementos */
+}
+
+/* Estilo do conteúdo do modal */
+.quiz-modal-content {
+    background-color: #fff;
+    margin: 3% auto; /* Centraliza verticalmente */
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%; /* Largura do modal */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-height: 80vh; /* Limita a altura máxima do modal */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+}
+
+/* Estilo da barra de rolagem (opcional) */
+.quiz-modal-content::-webkit-scrollbar {
+    width: 10px; /* Largura da barra */
+}
+
+.quiz-modal-content::-webkit-scrollbar-thumb {
+    background: #007bff; /* Cor da barra */
+    border-radius: 10px;
+}
+
+.quiz-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Cor da barra ao passar o mouse */
+}
+
+/* Botão de fechar o modal */
+.close-modal {
+    position: absolute; /* Posiciona em relação ao modal */
+    top: 10px; /* Distância do topo */
+    right: 20px; /* Distância da borda direita */
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    color: #333; /* Cor padrão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1001; /* Garante que fique acima do conteúdo do modal */
+}
+
+.close-modal:hover {
+    color: #ff0000; /* Cor ao passar o mouse */
+}
+
+/* Estilização das perguntas */
+.question {
+    margin-bottom: 20px; /* Maior espaçamento entre perguntas */
+    font-size: 18px; /* Tamanho de texto maior */
+    font-weight: bold; /* Negrito para destacar as perguntas */
+    color: #333; /* Cor do texto */
+}
+
+
+/* Estilo para as opções de resposta */
+.option {
+    display: flex;
+    align-items: center; /* Centraliza o texto verticalmente com o botão */
+    margin-bottom: 10px; /* Espaçamento entre as opções */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #f9f9f9; /* Cor de fundo clara */
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 8px; /* Borda arredondada */
+    cursor: pointer; /* Mostra que é clicável */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Estilo para a opção selecionada */
+.option input[type="radio"]:checked + label {
+    background-color: #b2ebf2; /* Fundo diferente para a opção marcada */
+    border-color: #007bff; /* Realça a borda */
+    font-weight: bold; /* Deixa o texto mais destacado */
+}
+
+.explanation {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo para o botão finalizar */
+#submit-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
 /* Contêiner para o efeito de simbolos musicais */
 .background-effect {
     position: fixed;
@@ -301,7 +431,7 @@ close-button:hover {
 
 #artist-input:hover {
     border-color: #4caf50; /* Muda a borda ao passar o mouse */
-    background-color: blue; /* Fundo leve ao passar o mouse */
+    background-color: #f0f8f0; /* Fundo leve ao passar o mouse */
 }
 
 #filter-artist-button {
@@ -316,7 +446,7 @@ close-button:hover {
 
 
 #filter-artist-button:hover {
-    background-color: #333; /* Altera o fundo no hover */
+    background-color: blue; /* Altera o fundo no hover */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
     transform: scale(1.05); /* Aumenta ligeiramente o botão */
 }
@@ -485,7 +615,7 @@ close-button:hover {
     display: flex;
     align-items: center; /* Alinha verticalmente */
     justify-content: center; /* Centraliza horizontalmente */
-    background: rgba(255, 253, 208, 0.9); /* Fundo levemente opaco */
+    background: rgba(204, 204, 204, 0.8); /* Fundo levemente opaco */
     padding: 15px;
     border-radius: 10px;
     backdrop-filter: blur(5px); /* Efeito vidro fosco */
@@ -499,8 +629,8 @@ close-button:hover {
 }
 
 .image-album img {
-    width: 600px; /* Ajuste conforme necessário */
-    height: 600px;
+    width: 1000px; /* Ajuste conforme necessário */
+    height: 1000px;
     border-radius: 10px;
     border: 3px solid rgba(255, 255, 255, 0.5); /* Borda sutil */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
@@ -677,7 +807,7 @@ close-button:hover {
 
 /* Controles de navegação */
 .controls {
-  background-color: rgba(255, 253, 208, 0.9); /* Fundo levemente opaco */
+  background-color: rgba(204, 204, 204, 0.8); /* Fundo levemente opaco */
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -728,7 +858,7 @@ close-button:hover {
 /* Ajustar tamanho e aparência do botão Sleep Timer */
 .sleep-timer-button,
 .favorite-button {
-  font-size: 1.8em; /* Tamanho ajustado para ambos ficarem iguais */
+  font-size: 2.2em; /* Tamanho ajustado para ambos ficarem iguais */
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -749,8 +879,7 @@ close-button:hover {
 
 /* Cor específica para o botão Favoritos */
 .favorite-button {
-  background: rgba(255, 253, 208, 0.9); /* Fundo levemente opaco */
-  padding: 15px;
+  padding: 20px;
   color: red;
 }
 

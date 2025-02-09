@@ -1,0 +1,88 @@
+[
+    {
+        "question": "Qual o nome e a idade da pessoa mais velha mencionada na Bíblia?",
+        "options": ["Enos, viveu 905 anos", "Noé, viveu 990 anos", "Matusalém, viveu 969 anos", "Rainha Ester, viveu 859 anos"],
+        "correct": 2,
+        "answer-explanation": "Matusalém (ou Metusalém) viveu 969 anos. Ele era filho de Enoque, que andou com Deus e foi o avô de Noé."
+    },
+    {
+        "question": "Qual dos nomes de Deus Moisés deveria dar aos israelitas, quando falasse de quem tinha lhe enviado?",
+        "options": ["Elohim", "El Shadday", "Eu Sou o que Sou", "Eu Sou o Senhor"],
+        "correct": 2,
+        "answer-explanation": " 'Eu sou o que Sou' foi a resposta dada por Deus a Moisés, quando perguntou sobre o Seu nome. Êxodo 3:13-14."
+    },
+    {
+        "question": "Sobre Samuel, o que não é verdade?",
+        "options": ["Sua mãe se chamava Ana", "Ungiu 3 reis de Israel: José, Saul e Davi", "Sucedeu o profeta Eli", "Teve uma visão enquanto ainda era muito novo"],
+        "correct": 1,
+        "answer-explanation": "O profeta Samuel ungiu a Saul e Davi como reis de Israel. José não foi rei. Foi governador no Egito muitos anos antes."
+    },
+    {
+        "question": "Quando bebê, como Moisés foi salvo do decreto infanticida do Faraó?",
+        "options": ["Foi levado às pressas para fora do Egito", "Foi escondido dentro de uma caverna", "Foi colocado num cesto e lançado no rio", "Foi levado ao templo para servir a Deus"],
+        "correct": 2,
+        "answer-explanation": "Moisés foi colocado num cestinho e deixado à beira rio. A filha do Faraó viu e adotou-o como seu filho."
+    },
+    {
+        "question": "Em quais livros da Bíblia é narrada a história do nascimento de Jesus?",
+        "options": ["Gênesis e Salmos", "Mateus e Marcos", "Hebreus e Apocalipse", "Mateus e Lucas"],
+        "correct": 3,
+        "answer-explanation": "O nascimento de Jesus é contado nos Evangelhos de Mateus e Lucas, no início do Novo Testamento. Mateus 1 e 2; Lucas 2."
+    },
+    {
+        "question": "Qual o significado original da palavra 'Bíblia'?",
+        "options": ["Bíblia é o plural de 'biblos' do grego e significa livros", "Bíblia significa 'palavra escrita' no hebraico", "Bíblia era o nome hebraico das pedras dos 10 Mandamentos, por isso foi adotada no conjunto dos livros", "Bíblia é uma homenagem aos primeiros tradutores, que eram chamados 'Biblianos'"],
+        "correct": 0,
+        "answer-explanation": "A palavra 'Bíblia' originou-se a partir do grego, referindo-se ao conjunto de livros sagrados. Os livros eram escritos em folhas de papiro na forma de rolos ou pergaminhos."
+    },
+    {
+        "question": "Qual o nome da cidade fundada por Caim, depois que saiu da presença de Deus?",
+        "options": ["Sodoma", "Gomorra", "Enoque", "Canaã"],
+        "correct": 2,
+        "answer-explanation": "Depois de ter saído da presença de Deus, Caim edificou uma cidade e colocou o nome de seu primeiro filho: Enoque. Gênesis 4:16-17."
+    },
+    {
+        "question": "Como e onde aconteceu a conversão de Paulo?",
+        "options": ["Foi chamado enquanto pescava junto de outros pescadores, no mar da Galiléia", "Teve um sonho à noite, enquanto dormia na cidade de Tarso", "Durante a pregação das Escrituras, na Sinagoga em Jerusalém", "Teve uma visão depois de cair por terra, perto de Damasco"],
+        "correct": 3,
+        "answer-explanation": "Paulo quando ia em direção a Damasco perseguindo os cristãos, viu uma resplandecente luz que o fez cair por terra. Jesus falou com ele e desse momento em diante se converteu a Cristo."
+    },
+    {
+        "question": "Qual foi o primeiro milagre de Jesus?",
+        "options": ["Curou o cego Bartimeu à beira de um caminho", "Andou sobre as águas e também fez Pedro andar", "Multiplicou pães e peixes para uma multidão", "Transformou a água em vinho numa festa de casamento"],
+        "correct": 3,
+        "answer-explanation": "O 1º milagre de Jesus foi a transformação da água em vinho. Em Caná da Galiléia, numa boda de casamento, Jesus fez este sinal e muitos creram nele. João 2:1-11."
+    },
+    {
+        "question": "Segundo Jesus, quais são os mandamentos mais importantes da Bíblia?",
+        "options": ["Não matar e guardar o sábado.", "Amar a Deus sobre todas as coisas e amar ao próximo como a si mesmo.", "Obedecer a Deus cumprindo os 10 mandamentos e batizar", "Buscar o Reino de Deus e fazer justiça"],
+        "correct": 1,
+        "answer-explanation": "Jesus disse que o maior mandamento é: Ame ao Senhor, o seu Deus, de todo o seu coração, de toda a sua alma e de todo entendimento e de todas as suas forças. E o segundo é este: Ame os seu próximo como a si mesmo. Marcos 12:29-31."
+    },
+    {
+        "question": "Quem foi a mulher sensata que impediu Davi de destruir Nabal, seu marido e sua casa?",
+        "options": ["Merabe", "Mical", "Abgail", "Bate-Seba"],
+        "correct": 2,
+        "answer-explanation": "Abigail era mulher de Nabal, um homem mau e insensato. Ela intercedeu por ele impedindo que Davi e seus homens destruíssem-no. 1 Samuel 25:23-33."
+    },
+    {
+        "question": "Qual o nome da filha mais velha de Saul prometida em casamento a Davi, mas dada a outro?",
+        "options": ["Mical", "Sulamita", "Merabe", "Talmai"],
+        "correct": 2,
+        "answer-explanation": "Merabe, a filha mais velha de Saul, seria esposa de Davi, mas foi dada a Adriel. 1 Samuel 18:17-19."
+    },
+    {
+        "question": "O que Deus fez para interromper a construção da Torre de Babel?",
+        "options": ["Destruiu a torre com um grande terremoto.", "Confundiu a língua dos homens e os espalhou pela terra.", "Fez com que a torre fosse invadida e destruída por povos inimigos.", "Enviou pragas e fogo para consumir a construção de Babel."],
+        "correct": 1,
+        "answer-explanation": "Deus encerrou o projeto da Torre de Babel confundindo a língua dos habitantes da terra. Gênesis 11:7-9."
+    },
+    {
+        "question": "Sobre a vida de Débora, é CORRETO dizer:",
+        "options": ["Foi casada com o rei Assuero e livrou Israel do complô armado por Hamã, inimigo dos judeus.", "Foi a rainha casada com Acabe, o rei idólatra que abandonou a Deus para servir a Baal.", "Foi profetisa e líder de Israel. Junto de Baraque venceu a batalha contra os cananeus.", "Foi a notável juíza de Israel que golpeou a Sísera, o comandante do exército de Canaã."],
+        "correct": 2,
+        "answer-explanation": "Débora era profetisa e liderava Israel no período dos juízes. A pedido de Baraque, foi com o exército de Israel para a batalha contra os cananeus. Juízes 4:4-10."
+    }
+ ]
+
+

@@ -1,0 +1,2 @@
+.simbol   color: rgba(0, 0, 0, 0.5); /* Preto translúcido */
+background-image: url('images/Fundo2.webp'); /* Caminho para a imagem */

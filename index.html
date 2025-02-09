@@ -42,7 +42,7 @@
   <!-- Informações da música -->
   <main>
            
-     <div id="countdown-timer" style="display: none; position: fixed; top: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 10px; border-radius: 5px; font-size: 16px; z-index: 1000;">
+     <div id="countdown-timer">
         Tempo restante: <span id="timer-display"></span>
      </div>
   
@@ -50,6 +50,9 @@
 
      <!-- Botão Versículo do Dia -->
      <button id="verse-button" class="verse-button">📖 Versículo do Dia</button>
+
+     <!-- Botão Iniciar Quiz -->
+     <button id="quiz-button" class="quiz-button">🎲 Iniciar Quiz</button>
 
      <!-- Modal Versículo -->
     <div id="verse-modal" class="verse-modal">
@@ -60,7 +63,17 @@
     </div>
     </div>
 
-     <div class="background-effect"></div>
+    <!-- Modal para o Quiz -->
+    <div id="quiz-modal" class="quiz-modal">
+        <div class="quiz-modal-content">
+            <span class="close-modal">&times;</span> <!-- Botão "X" --> 
+            <h2>Quiz de Perguntas</h2>
+            <div id="question-area"></div>
+            <button id="submit-button" style="display: none;">Finalizar Quiz</button>
+        </div>
+    </div>
+
+    <div class="background-effect"></div>
      
      <!-- Informações da Hora -->
      <div class="container"> 

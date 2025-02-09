@@ -519,6 +519,103 @@ document.addEventListener("DOMContentLoaded", () => {
   updateVerseWithClock(); // Chamada inicial para garantir que o versículo seja atualizado ao carregar
 });
 
+  // Funções para modal quiz
+   // Elementos do modal
+    const quizButton = document.getElementById('quiz-button');
+    const quizModal = document.getElementById('quiz-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const questionArea = document.getElementById('question-area');
+    const submitButton = document.getElementById('submit-button');
+
+    let questions = []; // Variável para armazenar as perguntas carregadas
+
+    // Abrir o modal ao clicar no botão "Iniciar Quiz"
+    quizButton.addEventListener('click', async () => {
+        quizModal.style.display = 'block';
+        await loadQuestions(); // Carrega as perguntas do JSON
+    });
+
+    // Fechar o modal ao clicar no "X"
+    closeModal.addEventListener('click', () => {
+        quizModal.style.display = 'none';
+    });
+
+    // Fechar o modal ao clicar fora da área de conteúdo
+    window.addEventListener('click', (event) => {
+        if (event.target === quizModal) {
+            quizModal.style.display = 'none';
+        }
+    });
+
+// Função para carregar perguntas do arquivo JSON
+async function loadQuestions() {
+    try {
+        const response = await fetch('quiz-questions.json'); // Busca o arquivo JSON
+        questions = await response.json(); // Converte para objeto
+        displayQuestions(); // Exibe as perguntas no modal
+    } catch (error) {
+        console.error("Erro ao carregar as perguntas:", error);
+    }
+}
+
+// Função para exibir perguntas no modal
+function displayQuestions() {
+    questionArea.innerHTML = ""; // Limpar perguntas anteriores
+    questions.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('question');
+        questionDiv.id = `question-${index}`; // Adiciona um ID para a pergunta
+        questionDiv.innerHTML = `
+            <p>${index + 1}. ${q.question}</p>
+            ${q.options
+                .map(
+                    (option, i) => `
+                    <div class="option">
+                        <input type="radio" name="question-${index}" value="${i}" id="q${index}o${i}">
+                        <label for="q${index}o${i}">${option}</label>
+                    </div>
+                    `
+                )
+                .join("")}
+        `;
+        questionArea.appendChild(questionDiv);
+    });
+
+    // Mostrar botão de finalizar
+    submitButton.style.display = 'block';
+}
+
+    function calculateScore() {
+    let score = 0;
+    questions.forEach((q, index) => {
+        const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+        const explanationDiv = document.createElement('div');
+
+        if (selectedOption) {
+            const selectedValue = parseInt(selectedOption.value);
+            if (selectedValue === q.correct) {
+                score++;
+                explanationDiv.innerHTML = `<p style="color: green;"><strong>Correto!</strong> ${q['answer-explanation']}</p>`;
+                explanationDiv.classList.add('correct');
+            } else {
+                explanationDiv.innerHTML = `<p style="color: red;"><strong>Errado!</strong> ${q['answer-explanation']}</p>`;
+                explanationDiv.classList.add('incorrect');
+            }
+        } else {
+            explanationDiv.innerHTML = `<p style="color: orange;"><strong>Sem resposta!</strong> ${q['answer-explanation']}</p>`;
+            explanationDiv.classList.add('no-answer');
+        }
+
+        const questionElement = document.querySelector(`.question:nth-child(${index + 1})`);
+        questionElement.appendChild(explanationDiv);
+    });
+
+    alert(`Você acertou ${score} de ${questions.length} perguntas!`);
+    submitButton.style.display = 'none'; // Oculta o botão de finalizar
+}
+
+// Evento do botão finalizar
+submitButton.addEventListener('click', calculateScore);
 
 
 // Função para anunciar a hora atual
@@ -538,7 +635,7 @@ function announceTime() {
   speech.lang = "pt-BR"; // Configura o idioma para português
   speech.volume = 1; // Volume máximo
   speech.rate = 1; // Velocidade normal
-  speech.pitch = 1; // Tom normal
+  speech.pitch = 1.6; // Tom normal
 
   // Referência ao player de música
   const player = document.getElementById('player');
@@ -569,7 +666,7 @@ function announceStation() {
   speech.lang = "pt-BR"; // Configura o idioma para português
   speech.volume = 1; // Volume máximo
   speech.rate = 1; // Velocidade normal
-  speech.pitch = 1.2; // Tom ligeiramente mais animado para parecer radialista
+  speech.pitch = 1.6; // Tom ligeiramente mais animado para parecer radialista
 
   // Referência ao player de música
   const player = document.getElementById('player');
